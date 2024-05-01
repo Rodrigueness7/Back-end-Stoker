@@ -1,36 +1,60 @@
 class Equipament {
 
-    id;
-    description;
-    type;
-    number;
-    value;
+  id;
+  description;
+  type;
+  number;
+  value;
 
-    constructor(data) {
-        this.setId(data.id);
-     
-    }
+  constructor(data) {
+    this.Id = data.id;
+    this.Description = data.description;
 
-    getId() {
-        return this.id
-    }
+  }
 
-    setId(value){
-      try {
-        if(value === undefined){
-            throw new Error('Id invalid')
-       }
-        return this.id = value
-      } catch (error) {
+  get Id() {
+    return this.id;
+  }
 
-        return error
+  set Id(value) {
+
+    try {
+      if (value === undefined) {
+        return this.id = 0;
       }
 
+      return this.id = value;
+
+    } catch (error) {
+
+      console.log(error.message) 
+    }
+  }
+
+  get Description() {
+    return this.description;
+  }
+
+  set Description(value) {
+    try {
+
+      if (value === undefined) {
+        throw new Error('description invalid');
+
+      }
+
+      return this.description = value;
+
+    } catch (error) {
+
+       console.log(error.message);
     }
 
-    findId() {
-        console.log(this.id) 
-    }
+  }
+
+  findId() {
+    console.log(this.Description)
+  }
 
 }
 
