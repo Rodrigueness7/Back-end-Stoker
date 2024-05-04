@@ -1,4 +1,6 @@
-class Equipament {
+const db = require('../database/mariadb')
+
+ class Equipament {
 
   id;
   description;
@@ -7,6 +9,8 @@ class Equipament {
   value;
   locale; 
   user
+
+  #table = 'equipament'
 
   constructor(data) {
     this.Id = data.id;
@@ -19,153 +23,110 @@ class Equipament {
   
   }
 
+
   get Id() {
-    return this.id;
+
+    return this.id
   }
 
   set Id(value) {
 
-    try {
-      if (value === undefined) {
-        return this.id = 0;
-      }
-
-      return this.id = value;
-
-    } catch (error) {
-
-      console.log(error.message) 
+    if(value === undefined) {
+      return this.id = 0
     }
+    return this.id = value
   }
 
-  get Description() {
-    return this.description;
 
+  get Description() {
+
+    return this.description
   }
 
   set Description(value) {
-    
-    try {
 
-      if (value === undefined) {
-        throw new Error('description invalid');
-
-      }
-
-      return this.description = value;
-
-    } catch (error) {
-
-       console.log(error.message)
+    if(value === undefined) {
+      throw 'invalid description'
     }
-
+    return this.description = value
   }
+
 
   get Type() {
 
-    return this.type;
-
+    return this.type
   }
 
   set Type(value) {
-    try {
-          
-    if(value == undefined) {
-      throw new Error ('invalid type')
-    }
 
-    return this.type = value;
-      
-    } catch (error) {
-      
-      console.log(error.message)
+    if(value === undefined) {
+      throw 'invalid type'
     }
+    return this.type = value
   }
-
 
   get Number() {
 
-    return this.number;
-
+    return this.number
   }
 
   set Number(value) {
 
-    try {
-      if(value === undefined) {
-        throw new Error('Invalid number')
-      }
-      return this.number = value;
-
-    } catch (error) {
-
-      console.log(error.message)
+    if(value === undefined) {
+      throw 'invalid number'
     }
-
+    return this.number = value
   }
 
   get Value() {
 
-    return this.value;
-
+    return this.value
   }
 
   set Value(value) {
-    try {
-      if(value === undefined) {
-        throw new Error ('Invalid value')
-      }
 
-      return this.value = value;
-
-    } catch (error) {
-      
-      console.log(error.message)
+    if(value === undefined) {
+      throw 'invalid value'
     }
+    return this.value = value
   }
 
   get Locale() {
-    return this.locale;
 
+    return this.locale
   }
 
   set Locale(value) {
-    try {
-      if(value === undefined) {
-        throw new Error('Invalid locale')
-      }
 
-      return this.locale = value;
-
-    } catch (error) {
-      
-      console.log(error.message)
-
+    if(value === undefined) {
+      throw 'invalid locale'
     }
+    return this.locale = value
   }
 
   get User() {
 
-    return this.user;
-
-  } 
+    return this.user
+  }
 
   set User(value) {
-    try {
-      if(value === undefined) {
-        throw new Error ('Invalid user')
-      }
-      return this.user = value;
 
-    } catch (error) {
-      console.log(error.message)
+    if(value === undefined) {
+      throw 'invalid user'
     }
+    return this.user = value
   }
 
 
-  findId(res) {
-    res.end(this.Description + " " + this.Type)
+  async insertData(data) {
+   await db.insert(this.#table, data)
 
+  }
+
+  static async selectData(res) {
+    db.select('equipament', (rows) => {
+      res.send(rows)
+    })
   }
 
 }

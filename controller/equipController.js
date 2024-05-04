@@ -1,13 +1,23 @@
 const Equipament = require('../model/equipament')
 
-const findAll = async (req, res) => {
+
+const addItem = async (req, res) => {
     try {
         let equipament = new Equipament(req.body)
-        equipament.findId(res)
+        equipament.insertData(equipament)
+        res.json({data:'Added successfully'})
     } catch (error) {
-        res.end(error)
+         res.end(error)
+    }
+}
+
+const findAll = async(req, res) => {
+    try {
+      await Equipament.selectData(res)
+    } catch (error) {
+        await res.send(error)
     }
 }
 
 
-module.exports = {findAll}
+module.exports = {addItem, findAll}
