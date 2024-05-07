@@ -124,11 +124,18 @@ const db = require('../database/mariadb')
   }
 
   static async selectData(res) {
-    db.select('equipament', (rows) => {
-      res.send(rows)
+   await db.select('equipament', async (rows) => {
+     await res.send(rows)
     })
   }
 
+  static async deleteData(id) {
+   await db.remove('equipament', id)
+  }
+
+  async updateData(data) {
+    await db.update(data)
+  }
 }
 
 module.exports = Equipament

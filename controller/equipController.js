@@ -19,5 +19,24 @@ const findAll = async(req, res) => {
     }
 }
 
+const deleteItem = async(req, res) => {
+    try {
+        let id = req.params.id
+       await Equipament.deleteData(id)
+        res.send({data: 'Delete'})
+    } catch (error) {
+        await res.send(error)
+    }
+}
 
-module.exports = {addItem, findAll}
+const updateItem = async(req, res) => {
+    try {
+        let equipament = new Equipament(req.body)
+       await equipament.updateData(equipament)
+        res.send({data: 'Updating'})
+    } catch (error) {
+        await res.send(error)
+    }
+}
+
+module.exports = {addItem, findAll, deleteItem, updateItem}

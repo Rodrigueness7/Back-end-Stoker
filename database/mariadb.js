@@ -35,4 +35,23 @@ const select = async (table, result) => {
     )
 }
 
-module.exports = {insert, select}
+const remove = async(table, condition) => {
+    await pool.getConnection().then(
+        async conn => {
+            await conn.query(`DELETE FROM ${table} WHERE id = ${condition}`).then(
+                await conn.end()
+            )
+        }
+    )
+}
+
+const update = async(data) => {
+    let key = '?'.repeat(Object.keys(data))
+
+    console.log(key)
+
+   
+
+} 
+
+module.exports = {insert, select, remove, update}
