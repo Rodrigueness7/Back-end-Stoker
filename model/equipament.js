@@ -133,8 +133,8 @@ const db = require('../database/mariadb')
    await db.remove('equipament', id)
   }
 
-  async updateData(data) {
-    await db.update(data)
+  async updateData(data, id) {
+    await db.update( this.#table ,data, id)
   }
 }
 

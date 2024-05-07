@@ -45,10 +45,16 @@ const remove = async(table, condition) => {
     )
 }
 
-const update = async(data) => {
-    let key = '?'.repeat(Object.keys(data))
-
-    console.log(key)
+const update = async(table, data, condition) => {
+    let key = Object.keys(data).join(' = ?, ').concat(' = ? ')
+    
+    await pool.getConnection().then(
+        async conn => {
+            await conn.query(`UPDATE ${table} SET ${key} WHERE id = ${condition}`, Object.values(data)).then(
+                await conn.end()
+            )
+        }
+    )
 
    
 

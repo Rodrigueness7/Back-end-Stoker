@@ -4,7 +4,7 @@ const equipController = require('../controller/equipController')
 
 route.get('/', equipController.findAll)
 route.post('/addItem', equipController.addItem)
-route.put('/update', equipController.updateItem)
+route.put('/update/:id', equipController.updateItem)
 route.delete('/delete/:id', equipController.deleteItem)
 
 

@@ -31,8 +31,9 @@ const deleteItem = async(req, res) => {
 
 const updateItem = async(req, res) => {
     try {
+        let id = req.params.id
         let equipament = new Equipament(req.body)
-       await equipament.updateData(equipament)
+       await equipament.updateData(equipament, id)
         res.send({data: 'Updating'})
     } catch (error) {
         await res.send(error)
