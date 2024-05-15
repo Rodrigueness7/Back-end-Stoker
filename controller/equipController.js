@@ -40,4 +40,11 @@ const updateItem = async(req, res) => {
     }
 }
 
-module.exports = {addItem, findAll, deleteItem, updateItem}
+const searchData = async(req, res) => {
+    try {
+        await Equipament.findData(req.body, res)
+    } catch (error) {
+        res.send(error)
+    }
+}
+module.exports = {addItem, findAll, deleteItem, updateItem, searchData}

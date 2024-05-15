@@ -136,6 +136,14 @@ const db = require('../database/mariadb')
   async updateData(data, id) {
     await db.update( this.#table ,data, id)
   }
+
+  static async findData(data, res) {
+    await db.selectData('equipament', data, async (rows) => {
+      await res.send(rows)
+    })
+  }
+  
 }
+
 
 module.exports = Equipament

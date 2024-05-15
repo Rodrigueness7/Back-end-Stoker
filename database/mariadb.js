@@ -54,10 +54,22 @@ const update = async(table, data, condition) => {
                 await conn.end()
             )
         }
-    )
-
-   
+    )  
 
 } 
 
-module.exports = {insert, select, remove, update}
+const selectData = async (table, data, result) => {
+    let keys = Object.keys(data).join(' = ? OR ').concat(' = ? ')
+    
+   await pool.getConnection().then(
+    async conn => {
+        await conn.query(`SELECT * FROM ${table} WHERE ${keys}`, Object.values(data)).then(
+            result
+        ).then(
+            await conn.end()
+        )
+    }
+   )
+}
+
+module.exports = {insert, select, remove, update, selectData}
