@@ -142,6 +142,7 @@ const db = require('../database/mariadb')
       await res.send(rows)
     })
   }
+
   
 }
 

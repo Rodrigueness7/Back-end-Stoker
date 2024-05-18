@@ -1,13 +1,22 @@
+const xlData = require('../xlsxFile/xlData')
 
-
-const upload = (req, res) => {
-   
-    try {
-        res.send('upload file')
-    } catch (error) {
-        res.send(error)
-    }
-} 
+const uploadFile = async (req, res) => {
+  try {
+     xlData.DataFile(req.file.filename)
+    await res.json({data: 'Upload File'})
+  } catch (error) {
+    await res.send(error)
+  }
+}
     
 
-module.exports = {upload}
+const readFile = async (req, res) => {
+    try {
+        await res.send(xlData.xlsxFile())
+    } catch (error) {
+       await res.send(error)
+    }
+}
+    
+
+module.exports = {uploadFile, readFile}
