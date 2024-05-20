@@ -14,6 +14,7 @@ route.post('/addItem', equipController.addItem)
 route.post('/upload', uploadFile.single('file'), equipKmController.uploadFile)
 route.put('/update/:id', equipController.updateItem)
 route.delete('/delete/:id', equipController.deleteItem)
+route.delete('/deleteFile', equipKmController.deleteFile )
 
 
 

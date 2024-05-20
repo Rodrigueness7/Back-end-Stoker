@@ -1,4 +1,5 @@
 const XLSX = require('xlsx')
+const fs = require('fs')
 
 let namefile = []
 
@@ -15,4 +16,19 @@ const xlsxFile = () => {
     return xlData
 }
 
-module.exports = { xlsxFile, DataFile }
+const deleteXlsx = () => {
+
+    if(namefile.length == 0) {
+        throw 'There is not exist file for delete'
+    }
+    
+   fs.unlink(`./uploads/${namefile[namefile.length - 1]}`, (error) => {
+    if(error) {
+        console.error(`error removing file:${error}`)
+    }
+    return namefile.pop()
+})
+
+}
+
+module.exports = { xlsxFile, DataFile, deleteXlsx }

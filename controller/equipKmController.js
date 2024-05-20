@@ -17,6 +17,15 @@ const readFile = async (req, res) => {
        await res.send(error)
     }
 }
+
+const deleteFile = async (req, res) => {
+  try {
+    xlData.deleteXlsx()
+    await res.send('Delete')
+  } catch (error) {
+    res.send(error)
+  }
+}
     
 
-module.exports = {uploadFile, readFile}
+module.exports = {uploadFile, readFile, deleteFile}
