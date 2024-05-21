@@ -1,4 +1,4 @@
-const xlData = require('../xlsxFile/xlData')
+const xlData = require('../model/equipamentKm')
 
 const uploadFile = async (req, res) => {
   try {
@@ -12,7 +12,8 @@ const uploadFile = async (req, res) => {
 
 const readFile = async (req, res) => {
     try {
-        await res.send(xlData.xlsxFile())
+     res.send(xlData.xlsxFile())
+      
     } catch (error) {
        await res.send(error)
     }
