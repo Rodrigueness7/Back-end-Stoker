@@ -12,9 +12,9 @@ const uploadFile = async (req, res) => {
 
 const readFile = async (req, res) => {
     try {
-       xlData.xlsxFile().map((item =>{
-       console.log(item)
-      }))
+      let cell1 = req.body.cell1
+      let cell2 = req.body.cell2
+      console.log(xlData.xlsxFile(cell1,cell2)) 
      res.send('Feito')
       
     } catch (error) {

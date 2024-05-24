@@ -8,13 +8,21 @@ const DataFile = (data) => {
    
 }
 
-const xlsxFile = () => {
+const xlsxFile = (cell1, cell2) => {
+
+    if(namefile.length === 0) {
+        throw 'there is no file'
+    }
     
-    const workbook = XLSX.readFile(`./uploads/${namefile[namefile.length-1]}`)
-    const sheet_name_list = workbook.SheetNames
-    const xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]])
+    const workbook = XLSX.readFile(`./uploads/${namefile[namefile.length-1]}`, {sheetStubs:false})
+    const worksheet = workbook.Sheets[workbook.SheetNames[0]]
+    let cells = XLSX.utils.sheet_to_json(worksheet, {
+        raw: true,
+        range: `${cell1}:${cell2}`,
+        defval: null,
+    })
  
-    return xlData
+     return cells
          
 }
 
