@@ -83,4 +83,12 @@ class EquipamentKm {
         return this.value = value
     }
 
+    static insert(data) {
+        data.map(itens => {
+            console.log(itens)
+        })
+    }
+
 }
+
+module.exports = EquipamentKm
