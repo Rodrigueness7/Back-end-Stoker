@@ -4,7 +4,7 @@ const equipController = require('../controller/equipController')
 const equipKmController = require('../controller/equipKmController')
 const storage = require('../multer/storage')
 const multer = require('multer')
-const uploadFile = multer({storage})
+const uploadFile = multer({ storage })
 
 
 route.get('/', equipController.findAll)
@@ -14,7 +14,7 @@ route.post('/addItem', equipController.addItem)
 route.post('/upload', uploadFile.single('file'), equipKmController.uploadFile)
 route.put('/update/:id', equipController.updateItem)
 route.delete('/delete/:id', equipController.deleteItem)
-route.delete('/deleteFile', equipKmController.deleteFile )
+route.delete('/deleteFile', equipKmController.deleteFile)
 
 
 

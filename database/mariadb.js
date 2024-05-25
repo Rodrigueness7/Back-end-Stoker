@@ -9,14 +9,14 @@ const pool = mariadb.createPool({
     connectionLimit: 5
 })
 
-const insert = async (table,data) => {
+const insert = async (table, data) => {
 
     let keys = '?,'.repeat(Object.keys(data).length).slice(0, -1)
 
-   await pool.getConnection().then(
-       async conn => {
+    await pool.getConnection().then(
+        async conn => {
             await conn.query(`INSERT INTO ${table} VALUE (${keys})`, Object.values(data)).then(
-               await conn.end()
+                await conn.end()
             )
         }
     )
@@ -24,10 +24,10 @@ const insert = async (table,data) => {
 
 const select = async (table, result) => {
 
-   await pool.getConnection().then(
+    await pool.getConnection().then(
         async conn => {
             await conn.query(`SELECT * FROM ${table}`).then(
-               result
+                result
             ).then(
                 await conn.end()
             )
@@ -35,7 +35,7 @@ const select = async (table, result) => {
     )
 }
 
-const remove = async(table, condition) => {
+const remove = async (table, condition) => {
     await pool.getConnection().then(
         async conn => {
             await conn.query(`DELETE FROM ${table} WHERE id = ${condition}`).then(
@@ -45,31 +45,31 @@ const remove = async(table, condition) => {
     )
 }
 
-const update = async(table, data, condition) => {
+const update = async (table, data, condition) => {
     let key = Object.keys(data).join(' = ?, ').concat(' = ? ')
-    
+
     await pool.getConnection().then(
         async conn => {
             await conn.query(`UPDATE ${table} SET ${key} WHERE id = ${condition}`, Object.values(data)).then(
                 await conn.end()
             )
         }
-    )  
+    )
 
-} 
+}
 
 const selectData = async (table, data, result) => {
     let keys = Object.keys(data).join(' = ? OR ').concat(' = ? ')
-    
-   await pool.getConnection().then(
-    async conn => {
-        await conn.query(`SELECT * FROM ${table} WHERE ${keys}`, Object.values(data)).then(
-            result
-        ).then(
-            await conn.end()
-        )
-    }
-   )
+
+    await pool.getConnection().then(
+        async conn => {
+            await conn.query(`SELECT * FROM ${table} WHERE ${keys}`, Object.values(data)).then(
+                result
+            ).then(
+                await conn.end()
+            )
+        }
+    )
 }
 
-module.exports = {insert, select, remove, update, selectData}
+module.exports = { insert, select, remove, update, selectData }

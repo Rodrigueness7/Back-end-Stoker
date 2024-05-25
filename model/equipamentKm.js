@@ -11,14 +11,12 @@ class EquipamentKm {
     constructor(data) {
         this.cod_Prod = data['Nº_KM']
         this._proposal = data.Proposta
-        this._description = data['Descrição'] 
+        this._description = data['Descrição']
         this.dt_Init = data['Início']
         this.dt_Finish = data.Fim
         this.dt_Entry = data.Entrada
         this.dt_Departure = data['Saída']
         this._value = data.Valor
-
-        
 
     }
 
@@ -27,12 +25,12 @@ class EquipamentKm {
     }
 
     set cod_Prod(value) {
-        if(value === undefined) {
+        if (value === undefined) {
             throw 'Invalid Nº_KM'
 
-        } 
+        }
         return this['Nº_KM'] = value
-        
+
     }
 
     get _proposal() {
@@ -40,7 +38,7 @@ class EquipamentKm {
     }
 
     set _proposal(value) {
-        if(value === undefined) {
+        if (value === undefined) {
             throw 'invalid proposal'
         }
         return this.Proposta = value
@@ -51,7 +49,7 @@ class EquipamentKm {
     }
 
     set _description(value) {
-        if(value === undefined) {
+        if (value === undefined) {
             throw 'invalid description'
         }
         return this['Descrição'] = value
@@ -62,7 +60,7 @@ class EquipamentKm {
     }
 
     set dt_Init(value) {
-        if(value === '') {
+        if (value === '') {
             return this['Início'] = null
         }
         return this['Início'] = new Date(value).toLocaleDateString('pt-br').split('/').reverse().join('-')
@@ -73,7 +71,7 @@ class EquipamentKm {
     }
 
     set dt_Finish(value) {
-        if(value === ' ') {
+        if (value === ' ') {
             return this.Fim = null
         }
         return this.Fim = new Date(value).toLocaleDateString('pt-br').split('/').reverse().join('-')
@@ -85,7 +83,7 @@ class EquipamentKm {
     }
 
     set dt_Entry(value) {
-        if(value === '') {
+        if (value === '') {
             return this.Entrada = null
         }
         return this.Entrada = new Date(value).toLocaleDateString('pt-br').split('/').reverse().join('-')
@@ -96,7 +94,7 @@ class EquipamentKm {
     }
 
     set dt_Departure(value) {
-        if(value === '') {
+        if (value === '') {
             return this['Saída'] = null
         }
         return this['Saída'] = new Date(value).toLocaleDateString('pt-br').split('/').reverse().join('-')
@@ -107,14 +105,14 @@ class EquipamentKm {
     }
 
     set _value(value) {
-        if(value === undefined) {
+        if (value === undefined) {
             throw 'Invalid value'
         }
         return this.Valor = value
     }
 
     insert(data) {
-      console.log(data)
+        console.log(data)
     }
 
 }

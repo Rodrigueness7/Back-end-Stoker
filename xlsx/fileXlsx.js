@@ -5,39 +5,39 @@ let namefile = []
 
 const DataFile = (data) => {
     namefile.push(data)
-   
+
 }
 
 const xlsxFile = (cell1, cell2) => {
 
-    if(namefile.length === 0) {
+    if (namefile.length === 0) {
         throw 'there is no file'
     }
-    
-    const workbook = XLSX.readFile(`./uploads/${namefile[namefile.length-1]}`, {sheetStubs:false})
+
+    const workbook = XLSX.readFile(`./uploads/${namefile[namefile.length - 1]}`, { sheetStubs: false })
     const worksheet = workbook.Sheets[workbook.SheetNames[0]]
     let cells = XLSX.utils.sheet_to_json(worksheet, {
         raw: true,
         range: `${cell1}:${cell2}`,
         defval: null,
     })
- 
-     return cells
-         
+
+    return cells
+
 }
 
 const deleteXlsx = () => {
 
-    if(namefile.length == 0) {
+    if (namefile.length == 0) {
         throw 'There is not exist file for delete'
     }
-    
-   fs.unlink(`./uploads/${namefile[namefile.length - 1]}`, (error) => {
-    if(error) {
-        console.error(`error removing file:${error}`)
-    }
-    return namefile.pop()
-})
+
+    fs.unlink(`./uploads/${namefile[namefile.length - 1]}`, (error) => {
+        if (error) {
+            console.error(`error removing file:${error}`)
+        }
+        return namefile.pop()
+    })
 
 }
 

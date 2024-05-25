@@ -1,13 +1,13 @@
 const db = require('../database/mariadb')
 
- class Equipament {
+class Equipament {
 
   id;
   description;
   type;
   number;
   value;
-  locale; 
+  locale;
   user
 
   #table = 'equipament'
@@ -20,8 +20,8 @@ const db = require('../database/mariadb')
     this.Value = data.value;
     this.Locale = data.locale;
     this.User = data.user
-    
-  
+
+
   }
 
 
@@ -32,7 +32,7 @@ const db = require('../database/mariadb')
 
   set Id(value) {
 
-    if(value === undefined) {
+    if (value === undefined) {
       return this.id = 0
     }
     return this.id = value
@@ -46,7 +46,7 @@ const db = require('../database/mariadb')
 
   set Description(value) {
 
-    if(value === undefined) {
+    if (value === undefined) {
       throw 'invalid description'
     }
     return this.description = value
@@ -60,7 +60,7 @@ const db = require('../database/mariadb')
 
   set Type(value) {
 
-    if(value === undefined) {
+    if (value === undefined) {
       throw 'invalid type'
     }
     return this.type = value
@@ -73,7 +73,7 @@ const db = require('../database/mariadb')
 
   set Number(value) {
 
-    if(value === undefined) {
+    if (value === undefined) {
       throw 'invalid number'
     }
     return this.number = value
@@ -86,7 +86,7 @@ const db = require('../database/mariadb')
 
   set Value(value) {
 
-    if(value === undefined) {
+    if (value === undefined) {
       throw 'invalid value'
     }
     return this.value = value
@@ -99,7 +99,7 @@ const db = require('../database/mariadb')
 
   set Locale(value) {
 
-    if(value === undefined) {
+    if (value === undefined) {
       throw 'invalid locale'
     }
     return this.locale = value
@@ -112,7 +112,7 @@ const db = require('../database/mariadb')
 
   set User(value) {
 
-    if(value === undefined) {
+    if (value === undefined) {
       throw 'invalid user'
     }
     return this.user = value
@@ -120,22 +120,22 @@ const db = require('../database/mariadb')
 
 
   async insertData(data) {
-   await db.insert(this.#table, data)
+    await db.insert(this.#table, data)
 
   }
 
   static async selectData(res) {
-   await db.select('equipament', async (rows) => {
-     await res.send(rows)
+    await db.select('equipament', async (rows) => {
+      await res.send(rows)
     })
   }
 
   static async deleteData(id) {
-   await db.remove('equipament', id)
+    await db.remove('equipament', id)
   }
 
   async updateData(data, id) {
-    await db.update( this.#table ,data, id)
+    await db.update(this.#table, data, id)
   }
 
   static async findData(data, res) {
@@ -144,7 +144,7 @@ const db = require('../database/mariadb')
     })
   }
 
-  
+
 }
 
 
