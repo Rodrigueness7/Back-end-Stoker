@@ -16,8 +16,12 @@ const readFile = async (req, res) => {
       let cell1 = req.body.cell1
       let cell2 = req.body.cell2
       let xlsx = xlData.xlsxFile(cell1,cell2)
-
-      EquipamentKm.insert(xlsx)
+    
+      xlsx.map(itens => {
+      let equipamentKm  = new EquipamentKm(itens)
+      equipamentKm.insert(equipamentKm)
+      })
+       
      res.send('Feito')
       
     } catch (error) {

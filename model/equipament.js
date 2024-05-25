@@ -20,6 +20,7 @@ const db = require('../database/mariadb')
     this.Value = data.value;
     this.Locale = data.locale;
     this.User = data.user
+    
   
   }
 
