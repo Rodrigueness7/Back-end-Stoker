@@ -1,5 +1,5 @@
 class EquipamentKm {
-    ['Nº K&M'];
+    ['Nº_KM'];
     Proposta;
     ['Descrição'];
     ['Início'];
@@ -9,7 +9,7 @@ class EquipamentKm {
     Valor
 
     constructor(data) {
-        this.cod_Prod = data['Nº K&M']
+        this.cod_Prod = data['Nº_KM']
         this._proposal = data.Proposta
         this._description = data['Descrição'] 
         this.dt_Init = data['Início']
@@ -23,15 +23,15 @@ class EquipamentKm {
     }
 
     get cod_Prod() {
-        return this['Nº K&M']
+        return this['Nº_KM']
     }
 
     set cod_Prod(value) {
         if(value === undefined) {
-            throw 'Invalid Nº K&M'
+            throw 'Invalid Nº_KM'
 
         } 
-        return this['Nº K&M'] = value
+        return this['Nº_KM'] = value
         
     }
 
