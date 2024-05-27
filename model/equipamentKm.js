@@ -1,120 +1,117 @@
 class EquipamentKm {
-    ['Nº_KM'];
-    Proposta;
-    ['Descrição'];
-    ['Início'];
-    Fim
-    Entrada
-    ['Saída']
-    Valor
+    codProd;
+    proposal;
+    description;
+    dtInit;
+    dtFinish;
+    dtEntry;
+    dtDeperture;
+    value;
 
     constructor(data) {
-        this.cod_Prod = data['Nº_KM']
-        this._proposal = data.Proposta
-        this._description = data['Descrição']
-        this.dt_Init = data['Início']
-        this.dt_Finish = data.Fim
-        this.dt_Entry = data.Entrada
-        this.dt_Departure = data['Saída']
-        this._value = data.Valor
-
+        this.cod_prod = data.codProd
+        this.proposal = data.proposal
+        this.description = data.description
+        this.dtInit = data.dtInit
+        this.dtFinish = data.dtFinish
+        this.dtEntry = data.dtEntry
+        this.dtDeperture = data.dtDeperture
+        this.value = data.value
     }
 
-    get cod_Prod() {
-        return this['Nº_KM']
+
+    get cod_prod() {
+        return this.codProd
     }
 
-    set cod_Prod(value) {
+    set cod_prod(value) {
         if (value === undefined) {
-            throw 'Invalid Nº_KM'
-
+            throw 'Invalid codProd'
         }
-        return this['Nº_KM'] = value
-
+        return this.codProd = value
     }
 
     get _proposal() {
-        return this.Proposta
+        return this.proposal
     }
 
     set _proposal(value) {
         if (value === undefined) {
-            throw 'invalid proposal'
+            return this.proposal = null
         }
-        return this.Proposta = value
+        return this.proposal = value
     }
 
     get _description() {
-        return this['Descrição']
+        return this.description
     }
 
     set _description(value) {
         if (value === undefined) {
-            throw 'invalid description'
+            throw 'Invalid description'
         }
-        return this['Descrição'] = value
+        return this.description = value
     }
 
-    get dt_Init() {
-        return this['Início']
+    get dt_init() {
+        return this.dtInit
     }
 
-    set dt_Init(value) {
-        if (value === '') {
-            return this['Início'] = null
+    set dt_init(value) {
+        if (value === undefined) {
+            return this.dtInit = null
         }
-        return this['Início'] = new Date(value).toLocaleDateString('pt-br').split('/').reverse().join('-')
+        return this.dtInit = value
     }
 
-    get dt_Finish() {
-        return this.Fim
+    get dt_finish() {
+        return this.dtFinish
     }
 
-    set dt_Finish(value) {
-        if (value === ' ') {
-            return this.Fim = null
+    set dt_finish(value) {
+        if (value === undefined) {
+            return this.dtFinish = null
         }
-        return this.Fim = new Date(value).toLocaleDateString('pt-br').split('/').reverse().join('-')
+        return this.dtFinish = value
     }
 
-
-    get dt_Entry() {
-        return this.Entrada
+    get dt_entry() {
+        return this.dtEntry
     }
 
-    set dt_Entry(value) {
-        if (value === '') {
-            return this.Entrada = null
+    set dt_entry(value) {
+        if (value === undefined) {
+            return this.dtEntry = null
         }
-        return this.Entrada = new Date(value).toLocaleDateString('pt-br').split('/').reverse().join('-')
+        return this.dtEntry = value
     }
 
-    get dt_Departure() {
-        return this['Saída']
+    get dt_deperture() {
+        return this.dtDeperture
     }
 
-    set dt_Departure(value) {
-        if (value === '') {
-            return this['Saída'] = null
+    set dt_deperture(value) {
+        if (value === undefined) {
+            return this.dtDeperture = null
         }
-        return this['Saída'] = new Date(value).toLocaleDateString('pt-br').split('/').reverse().join('-')
+        return this.dt_deperture = value
     }
 
     get _value() {
-        return this.Valor
+        return this.value
     }
 
     set _value(value) {
         if (value === undefined) {
-            throw 'Invalid value'
+            return this.value = null
         }
-        return this.Valor = value
+        return this.value = value
     }
+
 
     insert(data) {
         console.log(data)
     }
-
 }
 
 module.exports = EquipamentKm

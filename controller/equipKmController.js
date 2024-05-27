@@ -17,12 +17,10 @@ const readFile = async (req, res) => {
     let xlsx = xlData.xlsxFile(cell1, cell2)
 
     xlsx.map(itens => {
-      delete Object.assign(itens, { ['Nº_KM']: itens['Nº K&M'] })['Nº K&M'];
-
       let equipamentKm = new EquipamentKm(itens)
       equipamentKm.insert(equipamentKm)
+    
     })
-
     res.send('Feito')
 
   } catch (error) {
