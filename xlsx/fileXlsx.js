@@ -8,7 +8,10 @@ const DataFile = (data) => {
 
 }
 
-const xlsxFile = (cell1, cell2) => {
+const xlsxFile = (req) => {
+
+    let cell1 = req.body.cell1
+    let cell2 = req.body.cell2
 
     if (namefile.length === 0) {
         throw 'there is no file'
@@ -22,20 +25,31 @@ const xlsxFile = (cell1, cell2) => {
         defval: null,
     })
     let newCells = []
-     cells.map((data) => {
-        delete Object.assign(data, {['codProd']: data['Nº K&M']})['Nº K&M']
-        delete Object.assign(data, {['proposal']: data['Proposta']})['Proposta']
-        delete Object.assign(data, {['description']: data['Descrição']})['Descrição']
-        delete Object.assign(data, {['dtInit']: data['Início']})['Início']
-        delete Object.assign(data, {['dtFinish']: data['Fim']})['Fim']
-        delete Object.assign(data, {['dtEntry']: data['Entrada']})['Entrada']
-        delete Object.assign(data, {['dtDeperture']: data['Saída']})['Saída']
-        delete Object.assign(data, {['value']: data['Valor']})['Valor']
+
+    cells.map((data) => {
+        let cod = req.body.cod !== undefined ? req.body.cod : 'Nº K&M'
+        let prop = req.body.prop !== undefined ? req.body.prop : 'Proposta'
+        let desc = req.body.desc !== undefined ? req.body.desc : 'Descrição'
+        let init = req.body.init !== undefined ? req.body.init : 'Início'
+        let finsh = req.body.finsh !== undefined ? req.body.finsh : 'Fim'
+        let entry = req.body.entry !== undefined ? req.body.entry : 'Entrada'
+        let deper = req.body.deper !== undefined ? req.body.deper : 'Saída'
+        let value = req.body.value !== undefined ? req.body.value : 'Valor'
+
+
+        delete Object.assign(data, { ['codProd']: data[`${cod}`] })[`${cod}`]
+        delete Object.assign(data, { ['proposal']: data[`${prop}`] })[`${prop}`]
+        delete Object.assign(data, { ['description']: data[`${desc}`] })[`${desc}`]
+        delete Object.assign(data, { ['dtInit']: data[`${init}`] })[`${init}`]
+        delete Object.assign(data, { ['dtFinish']: data[`${finsh}`] })[`${finsh}`]
+        delete Object.assign(data, { ['dtEntry']: data[`${entry}`] })[`${entry}`]
+        delete Object.assign(data, { ['dtDeperture']: data[`${deper}`] })[`${deper}`]
+        delete Object.assign(data, { ['value']: data[`${value}`] })[`${value}`]
 
         return newCells.push(data)
-     })
+    })
 
-     return newCells
+    return newCells
 }
 
 const deleteXlsx = () => {
