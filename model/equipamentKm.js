@@ -10,104 +10,105 @@ class EquipamentKm {
 
     constructor(data) {
         this.cod_prod = data.codProd
-        this.proposal = data.proposal
-        this.description = data.description
-        this.dtInit = data.dtInit
-        this.dtFinish = data.dtFinish
-        this.dtEntry = data.dtEntry
-        this.dtDeperture = data.dtDeperture
-        this.value = data.value
+        this._proposal = data.proposal
+        this._description = data.description
+        this.dt_init = data.dtInit
+        this.dt_finish = data.dtFinish
+        this.dt_entry = data.dtEntry
+        this.dt_Deperture = data.dtDeperture
+        this._value = data.value
+        
+
     }
 
 
-    get cod_prod() {
-        return this.codProd
-    }
+   get cod_prod() {
+    return this.codProd
+   }
 
-    set cod_prod(value) {
-        if (value === undefined) {
-            throw 'Invalid codProd'
-        }
-        return this.codProd = value
+   set cod_prod(value) {
+    if(value === undefined) {
+        throw 'Invalid id'
     }
+    return this.codProd = value
+   }
 
-    get _proposal() {
-        return this.proposal
+   get _proposal() {
+    return this.proposal
+   }
+
+   set _proposal(value) {
+    if(value === undefined) {
+        throw 'Invalid proposal'
     }
+    return this.proposal = value
+   }
 
-    set _proposal(value) {
-        if (value === undefined) {
-            return this.proposal = null
-        }
-        return this.proposal = value
+   get _description() {
+    return this.description
+   }
+
+   set _description(value) {
+    if(value === undefined) {
+        throw 'Invalid description'
     }
+    return this.description = value
+   }
 
-    get _description() {
-        return this.description
+   get dt_init() {
+    return this.dtInit
+   }
+
+   set dt_init(value) {
+    if(value == false) {
+        return this.dtInit = null
     }
+    return this.dtInit = value
+   }
 
-    set _description(value) {
-        if (value === undefined) {
-            throw 'Invalid description'
-        }
-        return this.description = value
+   get dt_finish() {
+    return this.dtFinish
+   }
+
+   set dt_finish(value) {
+    if(value == false) {
+        return this.dtFinish = null
     }
+    return this.dtFinish = value
+   }
 
-    get dt_init() {
-        return this.dtInit
+   get dt_entry() {
+    return this.dtEntry
+   }
+
+   set dt_entry(value) {
+    if(value == false) {
+        return this.dtEntry = null
     }
+    return this.dtEntry = value
+   }
 
-    set dt_init(value) {
-        if (value === undefined) {
-            return this.dtInit = null
-        }
-        return this.dtInit = value
+   get dt_Deperture() {
+    return this.dtDeperture
+   }
+
+   set dt_Deperture(value) {
+    if(value == false) {
+        return this.dtDeperture = null
     }
+    return this.dtDeperture = value
+   }
 
-    get dt_finish() {
-        return this.dtFinish
+   get _value() {
+    return this.value
+   }
+
+   set _value(value) {
+    if(value === undefined) {
+        throw 'Invalid value'
     }
-
-    set dt_finish(value) {
-        if (value === undefined) {
-            return this.dtFinish = null
-        }
-        return this.dtFinish = value
-    }
-
-    get dt_entry() {
-        return this.dtEntry
-    }
-
-    set dt_entry(value) {
-        if (value === undefined) {
-            return this.dtEntry = null
-        }
-        return this.dtEntry = value
-    }
-
-    get dt_deperture() {
-        return this.dtDeperture
-    }
-
-    set dt_deperture(value) {
-        if (value === undefined) {
-            return this.dtDeperture = null
-        }
-        return this.dt_deperture = value
-    }
-
-    get _value() {
-        return this.value
-    }
-
-    set _value(value) {
-        if (value === undefined) {
-            return this.value = null
-        }
-        return this.value = value
-    }
-
+    return this.value = value
+   }
 
     insert(data) {
         console.log(data)
