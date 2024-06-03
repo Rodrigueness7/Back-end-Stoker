@@ -27,6 +27,11 @@ const xlsxFile = (req) => {
     let newCells = []
 
     cells.map((data) => {
+
+        if(/\s/.test(data.Fim) && data.Fim != null) {
+            return data.Fim = null
+        }
+
         let cod = req.body.cod !== undefined ? req.body.cod : 'Nº K&M'
         let prop = req.body.prop !== undefined ? req.body.prop : 'Proposta'
         let desc = req.body.desc !== undefined ? req.body.desc : 'Descrição'

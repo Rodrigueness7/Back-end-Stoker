@@ -13,16 +13,16 @@ const uploadFile = async (req, res) => {
 const readFile = async (req, res) => {
   try {
     let xlsx = xlData.xlsxFile(req)
-
     xlsx.map(itens => {
       let equipamentKm = new EquipamentKm(itens)
       equipamentKm.insert(equipamentKm)
     
     })
+
     res.send('Feito')
 
   } catch (error) {
-    await res.send(error)
+    await res.send(error.message)
   }
 }
 
@@ -31,7 +31,7 @@ const deleteFile = async (req, res) => {
     xlData.deleteXlsx()
     await res.send('Delete')
   } catch (error) {
-    res.send(error)
+    res.send(error.message)
   }
 }
 

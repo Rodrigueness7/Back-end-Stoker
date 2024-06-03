@@ -60,10 +60,10 @@ class EquipamentKm {
    }
 
    set dt_init(value) {
-    if(value == false) {
+    if(value == undefined ) {
         return this.dtInit = null
     }
-    return this.dtInit = value
+    return this.dtInit = new Date(value.split('/').reverse().join('-')).toISOString().split('T')[0]
    }
 
    get dt_finish() {
@@ -71,10 +71,11 @@ class EquipamentKm {
    }
 
    set dt_finish(value) {
-    if(value == false) {
+    if(value == undefined) {
         return this.dtFinish = null
     }
-    return this.dtFinish = value
+    return this.dtFinish = new Date(value.split('/').reverse().join('-')).toISOString().split('T')[0]
+     
    }
 
    get dt_entry() {
@@ -82,10 +83,10 @@ class EquipamentKm {
    }
 
    set dt_entry(value) {
-    if(value == false) {
+    if(value === undefined) {
         return this.dtEntry = null
     }
-    return this.dtEntry = value
+    return this.dtEntry = new Date(value.split('/').reverse().join('-')).toISOString().split('T')[0]
    }
 
    get dt_Deperture() {
