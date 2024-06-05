@@ -16,9 +16,7 @@ const readFile = async (req, res) => {
     xlsx.map(itens => {
       let equipamentKm = new EquipamentKm(itens)
       equipamentKm.insert(equipamentKm)
-    
     })
-
     res.send('Feito')
 
   } catch (error) {

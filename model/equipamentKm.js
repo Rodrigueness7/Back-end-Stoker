@@ -83,7 +83,7 @@ class EquipamentKm {
    }
 
    set dt_entry(value) {
-    if(value === undefined) {
+    if(value.length !== 10) {
         return this.dtEntry = null
     }
     return this.dtEntry = new Date(value.split('/').reverse().join('-')).toISOString().split('T')[0]
