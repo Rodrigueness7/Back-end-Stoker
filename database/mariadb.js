@@ -72,4 +72,16 @@ const selectData = async (table, data, result) => {
     )
 }
 
-module.exports = { insert, select, remove, update, selectData }
+const insertTable = async (table, data) => {
+    let keys = '?,'.repeat(Object.keys(data).length).slice(0, -1)
+
+    await pool.getConnection().then(
+        async conn => {
+            await conn.query(`INSERT INTO ${table} VALUES(${keys})`, Object.values(data)).then(
+                await conn.end()
+            )
+        }
+    )
+}
+
+module.exports = { insert, select, remove, update, selectData, insertTable }

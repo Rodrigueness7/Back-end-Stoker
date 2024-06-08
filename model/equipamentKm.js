@@ -1,3 +1,5 @@
+const db = require('../database/mariadb')
+
 class EquipamentKm {
     codProd;
     proposal;
@@ -116,7 +118,7 @@ class EquipamentKm {
     }
 
     insert(data) {
-        console.log(data)
+        db.insertTable('equipamentkm', data)
     }
 }
 
