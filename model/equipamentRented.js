@@ -1,6 +1,6 @@
 const db = require('../database/mariadb')
 
-class EquipamentKm {
+class EquipamentRented{
     codProd;
     proposal;
     description;
@@ -118,8 +118,8 @@ class EquipamentKm {
     }
 
     insert(data) {
-        db.insertTable('equipamentkm', data)
+      db.insertTable('equipamentRented', data)
     }
 }
 
-module.exports = EquipamentKm
+module.exports = EquipamentRented;

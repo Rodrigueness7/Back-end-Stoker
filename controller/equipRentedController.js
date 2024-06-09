@@ -1,4 +1,4 @@
-const EquipamentKm = require('../model/equipamentKm')
+const EquipamentRented = require('../model/equipamentRented')
 const xlData = require('../xlsx/fileXlsx')
 
 const uploadFile = async (req, res) => {
@@ -14,8 +14,8 @@ const readFile = async (req, res) => {
   try {
     let xlsx = xlData.xlsxFile(req)
     xlsx.map(itens => {
-      let equipamentKm = new EquipamentKm(itens)
-      equipamentKm.insert(equipamentKm)
+      let equipamentRented = new EquipamentRented(itens)
+      equipamentRented.insert(equipamentRented)
     })
     res.send('Feito')
 
